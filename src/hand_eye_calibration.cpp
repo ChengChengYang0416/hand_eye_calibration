@@ -59,9 +59,15 @@ MatrixXd readMatrix(const char *filename){
 
 int main(int argc, char** argv){
 
+  // check if input is correct
+  if (argc != 2){
+    cout << "Usage : rosrun <package_name> <node_name> <path_of_file>" << endl;
+    return -1;
+  }
+
   // get position in both robotic frame and camera frame from calibration.txt
   MatrixXd m;
-  const char *file = "/home/ncrl/qt_ws/src/Sensing_int_sys/hand_eye_calibration/src/calibration.txt";
+  const char *file = argv[1];
   m = readMatrix(file);
 
   // depart position to robotic frame and camera frame
